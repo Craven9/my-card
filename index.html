@@ -25,18 +25,47 @@
 
 <body>
   <h1>polaris-chip</h1>
-  <!-- this is going to do whatever the tag's defaults are -->
   <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
   <polaris-chip title="Faculty and Staff"></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
   <polaris-chip title="Grants and donations"></polaris-chip>
 
   <h1>my-card</h1>
-  <my-card></my-card>
 
-  <!-- this is what is bringing in the definition for this tag -->
+  <h2>My Card Examples</h2>
+
+  <my-card 
+    title="Professor Ollendyke" 
+    image="https://github.com/btopro.png">
+    <p>This is my teacher, Brian Ollendyke. He enjoys teaching and makes class engaging.</p>
+  </my-card>
+
+  <my-card 
+    title="Charmander" 
+    image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png">
+    <p>One of the first pokemon that have been in the game. it is one of the first starters you can choose from.</p>
+  </my-card>
+
+<my-card 
+  title="Deer" 
+  image="https://picsum.photos/id/1003/300/200">
+  <p>Just a Deer</p>
+</my-card>
+
+  <my-card 
+    title="Paris" 
+    image="https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg"
+    fancy>
+    <p>The City of Love. But also the city where you get robbed every 15 feet</p>
+  </my-card>
+
+  <my-card 
+    title="Random Inspiration" 
+    image="https://picsum.photos/300/200">
+    <p>“The best way to predict the future is to invent it.” – Alan Kay</p>
+  </my-card>
+
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
 </body>
-
 </html>
