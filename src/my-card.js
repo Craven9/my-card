@@ -1,11 +1,5 @@
 import { LitElement, html, css } from 'lit';
 
-/**
- * Now it's your turn. Here's what we need to try and do:
- * 1. Get you HTML from your card working in here 
- * 2. Get your CSS rescoped as needed to work here
- */
-
 export class MyCard extends LitElement {
 
   static get tag() {
@@ -23,7 +17,7 @@ export class MyCard extends LitElement {
     return {
       title: { type: String },
       image: { type: String },
-      fancy: { type: Boolean }
+      fancy: { type: Boolean, reflect: true } // reflect keeps DOM attribute in sync
     };
   }
 
@@ -31,78 +25,99 @@ export class MyCard extends LitElement {
     return css`
       :host {
         display: block;
+        margin: 12px;
+      }
+
+      :host([fancy]) {
+        background-color: var(--my-card-fancy-bg, lightblue);
+        border: 2px solid darkgrey;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       }
 
       .card {
         display: flex;
         flex-direction: column;
-        border-radius: 16px;
-        overflow: hidden;
+        border-radius: 12px;
         width: 280px;
+        height: 400px; 
         background: #fff;
-        box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+        overflow: hidden;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
 
       .card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-4px);
         box-shadow: 0 12px 24px rgba(0,0,0,0.15);
       }
 
       .card-image {
         width: 100%;
         height: 180px;
-        object-fit: cover;
+        object-fit: cover; 
       }
 
       .card-text {
+        flex: 1;
         padding: 16px;
-        background: #fafafa;
+        background: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       .card-title {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         margin: 0 0 10px 0;
-        color: #2d3a8c;
+        color: #1876a5;
         font-weight: 700;
         text-align: center;
-        border-bottom: 2px solid #e0e7ff;
         padding-bottom: 6px;
       }
 
-      .card.fancy {
-        background: linear-gradient(135deg, #ff9a8b, #ff6a88, #ff99ac);
-        color: white;
+      details summary {
+        text-align: left;
+        font-size: 1rem;
+        padding: 4px 0;
       }
 
-      .card.fancy .card-text {
-        background: rgba(255, 255, 255, 0.15);
+      details[open] summary {
+        font-weight: bold;
       }
 
-      .card.fancy .card-title {
-        color: white;
-        border-bottom: 2px solid rgba(255,255,255,0.3);
-      }
-
-      @media (max-width: 600px) {
-        .card {
-          width: 90%;
-        }
+      details div {
+        border-top: 1px solid #ddd;
+        padding: 8px;
+        max-height: 70px;
+        overflow-y: auto;
       }
     `;
   }
 
+  openChanged(e) {
+    if (e.target.hasAttribute('open')) {
+      this.fancy = true;
+    } else {
+      this.fancy = false;
+    }
+  }
+
   render() {
     return html`
-      <div class="card ${this.fancy ? "fancy" : ""}">
+      <div class="card">
         <img 
           class="card-image" 
           src="${this.image || 'https://via.placeholder.com/280x180'}" 
-          alt="${this.title || 'Card image'}" 
+          alt="${this.title || 'Default image'}" 
         />
         <div class="card-text">
-          <h3 class="card-title">${this.title}</h3>
-          <slot></slot>
+          <h3 class="card-title">${this.title || 'Default Title'}</h3>
+          <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+            <summary>Description</summary>
+            <div>
+              <slot>No description provided.</slot>
+            </div>
+          </details>
         </div>
       </div>
     `;

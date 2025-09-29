@@ -19,51 +19,75 @@
     polaris-chip {
       margin: 16px;
     }
+
+   
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      align-items: stretch; 
+    }
+
+    
+    my-card[fancy] {
+      --my-card-fancy-bg: lightgrey;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #292929;
+    }
   </style>
+
   <title>polaris-chip / my-card</title>
 </head>
 
 <body>
-  <h1>polaris-chip</h1>
+  <h1>Polaris-Chip</h1>
   <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
   <polaris-chip title="Faculty and Staff"></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
   <polaris-chip title="Grants and donations"></polaris-chip>
 
-  <h1>my-card</h1>
+  <h2>Card Examples</h2>
+  <div class="card-container">
+    <my-card
+      fancy
+      title="Professor Ollendyke" 
+      image="https://github.com/btopro.png">
+      <p>This is my teacher, <strong>Brian Ollendyke</strong>. He enjoys teaching and makes class engaging.</p>
+    </my-card>
 
-  <h2>My Card Examples</h2>
+    <my-card 
+      fancy
+      title="Charmander" 
+      image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png">
+      <p>One of the <strong>first Pokémon</strong> in the series. It is also one of the starter Pokémon you can choose from.</p>
+    </my-card>
 
-  <my-card 
-    title="Professor Ollendyke" 
-    image="https://github.com/btopro.png">
-    <p>This is my teacher, Brian Ollendyke. He enjoys teaching and makes class engaging.</p>
-  </my-card>
+    <my-card
+      fancy
+      title="Deer" 
+      image="https://picsum.photos/id/1003/300/200">
+      <p><small>Just a small <strong>Deer</strong>.</small></p>
+    </my-card>
 
-  <my-card 
-    title="Charmander" 
-    image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png">
-    <p>One of the first pokemon that have been in the game. it is one of the first starters you can choose from.</p>
-  </my-card>
+    <my-card 
+      fancy
+      title="Paris" 
+      image="https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg">
+      <p>The City of Love. A place full of <strong>history</strong>, <strong>culture</strong>, and <strong>sights</strong> to see.</p>
+    </my-card>
 
-<my-card 
-  title="Deer" 
-  image="https://picsum.photos/id/1003/300/200">
-  <p>Just a Deer</p>
-</my-card>
-
-  <my-card 
-    title="Paris" 
-    image="https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg"
-    fancy>
-    <p>The City of Love. But also the city where you get robbed every 15 feet</p>
-  </my-card>
-
-  <my-card 
-    title="Random Inspiration" 
-    image="https://picsum.photos/300/200">
-    <p>“The best way to predict the future is to invent it.” – Alan Kay</p>
-  </my-card>
+    <my-card
+      fancy
+      title="Random Inspiration" 
+      image="https://www.bing.com/th/id/OIP.skI4uSG77WQfxgs-qISq4gHaH6?w=173&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2">
+      <p><i>“The best way to predict the future is to invent it.”</i> - <strong>Alan Kay</strong></p>
+    </my-card>
+  </div>
 
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
